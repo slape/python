@@ -16,10 +16,20 @@ def roll_dice(number_of_sides):
     print ("Your guess is invalid")
   else :
     print ("Rolling...")
+    print"                  _______."
+    print"       ______    | .   . |\ "
+    print"      /     /\   |   .   |.\ "
+    print"     /  '  /  \  | .   . |.'|"
+    print"    /_____/. . \ |_______|.'|"
+    print"    \ . . \    /  \ ' .   \ |"
+    print"     \ . . \  /    \____'__\|"
+    print"      \_____\/"
     sleep(2)
     print "The first die roll is %d" % first_roll
-    sleep(2)
+    sleep(.25)
     print "The second die roll is %d" % second_roll
+    sleep(.75)
+    print "My total is ", second_roll + first_roll
     sleep(2)
     total_roll = first_roll + second_roll
     print "Result..."

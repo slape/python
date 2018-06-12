@@ -20,14 +20,18 @@ while guesses_left > 0:
   while True:
       if guess in range(1,11):
           break
-    
+
       print "What the hell was that??"
       sleep(2)
       guess = int(raw_input("Try guessing a number from 1-10: "))
 
   if guess == random_number :
+    sleep(1)
     print "You win!"
     break
+  else :
+    sleep(1)
+    print "That's not it! Guess again."
   guesses_left -= 1
 
 else :
