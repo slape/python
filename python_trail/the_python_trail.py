@@ -30,7 +30,7 @@ class Player(object):
     def __repr__(self):
         for i in assets:
             if assets[i] != 0:
-                print "$s has $d $s" (name, assets[i], i)
+                print f"{name} has {assets[i]} {i}"
 
     def increment_asset():
         pass
@@ -45,5 +45,5 @@ playerNum = raw_input("Enter up to 4 players: ")
 playerNames = []
 while playerNum > 0:
     for i in playerNum:
-        playerNames[i] = Player(raw_input("enter name for player %s: " % i))
+        playerNames[i] = Player(raw_input("Enter name for player %s: " % i))
         playerNum -= 1
