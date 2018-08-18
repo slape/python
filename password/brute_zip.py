@@ -55,6 +55,7 @@ def main():
 
   list_dir(zip_file)
   ask_brute()
+
   if brute_zip(zip_file, passwords_file) == None:
     print("\nNone of those passwords worked.")
     print("\nExiting brute_zip.\n")
