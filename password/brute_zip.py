@@ -2,14 +2,11 @@ import sys
 from zipfile import ZipFile
 from time import sleep
 
-def welcome(zip):
- print(f"\nWelcome to zipKraken. These are the files contained in {zip}:\n")
- sleep(1)
-
 def list_dir(zip):
   try:
     with ZipFile(zip) as zf:
       zf.printdir()
+      print("\n WARNING: Never extract archives from untrusted sources without prior inspection.\n")
   except:
     print(f"""{zip} does not appear to be a .zip file.
 Try running this program with a file ending in .zip""")
@@ -19,9 +16,7 @@ Try running this program with a file ending in .zip""")
 
 def ask_brute():
     while True:
-        yN = input("""
-Attempt to brute force attack this .zip file?
-(This will try the top 5000 most commonly used passwords.) (y/n): """)
+        yN = input("Attempt to brute force attack this .zip file with your password list (y/n)? ")
         if yN != 'y' and yN != 'n':
           print("\nNot a valid input. Enter 'y' or 'n'.")
         elif yN == 'n':
@@ -55,7 +50,9 @@ def brute_zip(zip, pw_file):
 def main():
   zip_file = sys.argv[1]
   passwords_file = sys.argv[2]
-  welcome(zip_file)
+  print(f"\nWelcome to brute_zip. These are the files contained in {zip_file}:\n")
+  sleep(1)
+
   list_dir(zip_file)
   ask_brute()
   if brute_zip(zip_file, passwords_file) == None:
