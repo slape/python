@@ -10,7 +10,7 @@ def list_dir(zip):
   except:
     print(f"""{zip} does not appear to be a .zip file.
 Try running this program with a file ending in .zip""")
-    print("\nExiting zipKraken.\n")
+    print("\nExiting brute_zip.\n")
     sleep(1)
     exit()
 
@@ -20,7 +20,7 @@ def ask_brute():
         if yN != 'y' and yN != 'n':
           print("\nNot a valid input. Enter 'y' or 'n'.")
         elif yN == 'n':
-          print("\nExiting zipKraken.\n")
+          print("\nExiting brute_zip.\n")
           sleep(1)
           exit()
         else:
@@ -40,7 +40,7 @@ def brute_zip(zip, pw_file):
           try:
             zf.extractall(pwd=password)
             print("\nSucessful with password: {password}")
-            print("\nExiting zipKraken.\n")
+            print("\nExiting brute_zip.\n")
             sleep(1)
             return True
           except:
@@ -57,7 +57,7 @@ def main():
   ask_brute()
   if brute_zip(zip_file, passwords_file) == None:
     print("\nNone of those passwords worked.")
-    print("\nExiting zipKraken.\n")
+    print("\nExiting brute_zip.\n")
     sleep(1)
 
 if __name__ == '__main__':
