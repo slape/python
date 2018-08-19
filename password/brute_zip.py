@@ -14,6 +14,7 @@ Try running this program with a file ending in .zip""")
     sleep(1)
     exit()
 
+
 def ask_brute():
     while True:
         yN = input("Attempt to brute force attack this .zip file with your password list (y/n)? ")
@@ -26,25 +27,36 @@ def ask_brute():
         else:
           break
 
-def brute_zip(zip, pw_file):
-    #open passwords file
+
+def enc_password_list(pw_file):
+  passwords = []
+  encoded_passwords = []
+#open passwords file
   with open(pw_file) as file:
-    #put passwords into a list
     passwords = file.read().splitlines()
+    #put passwords into a list
     for password in passwords:
      #encode the passwords with utf-8
-      password = password.encode('utf-8')
+      encoded_passwords.append(password.encode('utf-8'))
+
+  return encoded_passwords
+
+
+def brute_zip(zip, pw_file):
+  #get the encoded password list
+  passwords = enc_password_list(pw_file)
     #open the zipfile
-      with ZipFile(zip) as zf:
-    #try the extract all function with each password.
-          try:
-            zf.extractall(pwd=password)
-            print("\nSucessful with password: {password}")
-            print("\nExiting brute_zip.\n")
-            sleep(1)
-            return True
-          except:
-            print(f"Tried: {password}")
+  with ZipFile(zip) as zf:
+   for password in passwords:
+#try the extract all function with each password.
+     try:
+       zf.extractall(pwd=password)
+       print(f"\nSucessful with password: {password}")
+       print("\nExiting brute_zip.\n")
+       sleep(1)
+       return True
+     except:
+       print(f"Tried: {password}")
 
 
 def main():
