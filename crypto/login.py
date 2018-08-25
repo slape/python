@@ -12,11 +12,13 @@ hashed_password = sha256.hexdigest()
 with open('UserInfo_Hashed.csv', 'r') as csv_file:
     csv_rows = csv.reader(csv_file)
     for row in csv_rows:
-# * If a match is found, the user should be greeted with their name, address, and bank balance.
+#If a match is found, the user should be greeted with their name, address,
+#and bank balance.
         if user_email in row and hashed_password in row:
             print(f"Hello {row[0]}.\nYour address on file is: {row[4]}\n"
             f"Your bank balance is: {row[10]}.")
             break
-# * If no match is found, the user should be informed that their login attempt was invalid.
+#If no match is found, the user should be informed that their login attempt
+#was invalid.
     else :
         print("Login is invalid.")
