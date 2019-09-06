@@ -38,6 +38,30 @@ class Player:
     def choose_trail(self):
         pass
 
+    # def choose_trail():
+    #     if len(groupTrailOptions) > 0:
+    #         print_options(groupTrailOptions)
+    #         print('\n')
+    #         for option in trailOptions.keys:
+    #             if option in groupTrailOptions:
+    #                 print(option)
+    #         option = input("Choose a trail option: ")
+    #         print(f"You chose option {option}: {trailOption[option]}.")
+    #         decrement_trail()
+    #     else:
+    #         print("The group is out of options.")
+    #         input("Press Enter to roll the dice.")
+    #         option = roll_dice(14)
+    #         if option == 11:
+    #             print(f"You rolled an {option}! Receive one Trail Option.")
+    #             incerment_trail()
+    #         elif option == 12:
+    #             print(f"You rolled a {option}! Receive one Supply.")
+    #             increment_supplies()
+    #         else :
+    #             print(f"You rolled a {option}: {trailOption[option]}.")
+    #     return option
+
     # remove a trail option that was used
     def decrement_trail_option(self):
         pass
