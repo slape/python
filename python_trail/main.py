@@ -160,6 +160,13 @@ ascii = {
     "vicodin" : "ascii_pics/vicodin",
 }
 
+class Player:
+    def __init__(self, number, name, supplies, trail_options):
+        self.name = name
+        self.number = number
+        self.supplies = supplies
+        self.trail_options = trail_options
+
 # Select number of players
 def select_players():
     numPlayers = 0
@@ -183,6 +190,18 @@ def name_players(num_players):
         players[i] = name
     return players
 
+def create_players(players):
+    player_list = []
+    for index in range(len(players)):
+        supps = {}
+        trails = {}
+        for i in range(5):
+            trails[trailOptions[randint(0, 14)]] = 1
+            supps[supplies[randint(0, 10)]] = 1
+        player = Player(index, players[index + 1], supps, trails)
+        player_list.append(player)
+    return player_list
+
 # Assign group assets. 5 random assets per player.
 def assign_assets(num_players):
     for i in range(num_players * 5):
@@ -190,10 +209,16 @@ def assign_assets(num_players):
         groupSupplies[supplies[randint(0, 10)]] += 1
 
 # Print player numbers and names.
-def print_players(players):
+def print_players(player_list):
     print("The Players are:")
-    for player in players:
-        print(f"Player {player}: {players[player]}.")
+    for player in player_list:
+        print(f"Player {player.number}: {player.name}.")
+        print(f"\n{player.name} has these supplies:")
+        for i in player.supplies:
+            print(f"{i}: {player.supplies[i]}")
+        print(f"\n{player.name} has these trail options:")
+        for i in player.trail_options:
+            print(f"{i}: {player.trail_options[i]}")
 
 # Print group trail options.
 def print_options(groupTrailOptions):
@@ -291,7 +316,8 @@ def game_setup():
     # Select players and add them to a dictionary.
     num_players = select_players()
     players = name_players(num_players)
-    print_players(players)
+    player_list = create_players(players)
+    print_players(player_list)
     print('\n')
 
     # Assign supplies and trail options to the team.
