@@ -279,7 +279,6 @@ def game_setup():
     print_players(player_list)
     print('\n')
 
-    wait()
     system('clear')
 
     # Starting message
@@ -291,47 +290,40 @@ def game_setup():
     print_ascii(ascii['death'])
     print("The Trail is harsh. Good Luck.")
     wait()
-
-# execute and reveal consequences of choosen trial. Returns number of players left.
-def execute_trail(trail):
-    # choose_calamity()
-    # execute_calamity()
-    # choose_supply()
-    # execute_supply()
-    pass
+    return player_list
 
 # A random calamity is choosen
-def choose_calamity():
+def present_calamity():
     pass
 
 # execute and reveal consequences of choosen calamity. Returns dict of current calamities.
-def execute_calamity(calamity):
+def calamity_check():
     pass
 
 # Start Game Play
 def main():
 
-    game_setup()
-
+    player_list = game_setup()
     trails_traversed = 0
-    while trails_traversed < 20:
-        choose_trail()
-        players_left = execute_trail()
-
-        if len(players_left) == 0:
+    while len(player_list) > 0:
+        for player in player_list:
+            player.choose_trail()
+            present_calamity()
+            player.choose_supply()
+            calamity_check()
+            trails_traversed += 1
+        if trails_traversed == 20:
             break
 
-        trails_traversed += 1
-
-    if trails_traversed == 20 and len(players) > 0:
+    if trails_traversed == 20 and len(player_list) > 0:
         print_ascii(ascii['trail'])
-        print(f"Congratulations! You made it through the trail with {len(players_left)} left.")
-        sleep(3)
+        print(f"Congratulations! You made it through the trail with {len(player_list)} players left.")
+        sleep(2)
         system('clear')
     else :
         print_ascii(ascii['death'])
         print(f"The Trail is harsh. Everyone died. Game over.")
-        sleep(3)
+        sleep(2)
         system('clear')
 
 if __name__ == '__main__':
