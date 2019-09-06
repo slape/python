@@ -1,6 +1,7 @@
 from time import sleep
 from random import randint
 from os import system
+from models import Player
 
 #define optional trails
 trailOptions = {
@@ -18,7 +19,7 @@ trailOptions = {
         11: "Winding road crosses a river straight ahead",
         12: "Treacherous road crosses a river straight ahead",
         13: "Treacherous road crosses a river to the left",
-        14: "Treacherous road crosses a river to the right"
+        14: "Treacherous road crosses a river to the right",
 }
 trailDefinitions = {
         "Fort ahead": "You have arrived at a Fort. Collect 2 Supplies.",
@@ -35,7 +36,7 @@ trailDefinitions = {
         "Winding road crosses a river straight ahead": "Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.",
         "Treacherous road crosses a river straight ahead": "Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player",
         "Treacherous road crosses a river to the left": "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply",
-        "Treacherous road crosses a river to the right": "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply."
+        "Treacherous road crosses a river to the right": "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply.",
 }
 groupTrailOptions = {
         "Fort ahead": 0,
@@ -52,7 +53,7 @@ groupTrailOptions = {
         "Winding road crosses a river straight ahead": 0,
         "Treacherous road crosses a river straight ahead": 0,
         "Treacherous road crosses a river to the left": 0,
-        "Treacherous road crosses a river to the right": 0
+        "Treacherous road crosses a river to the right": 0,
 }
 #define supplyoptions
 supplies = {
@@ -66,7 +67,7 @@ supplies = {
         7: "A Dream Catcher",
         8: "A Mace",
         9: "A partially eaten birthday cake",
-        10: "Soylent"
+        10: "Soylent",
 }
 
 groupSupplies = {
@@ -80,7 +81,7 @@ groupSupplies = {
         "A Dream Catcher": 0,
         "A Mace": 0,
         "A partially eaten birthday cake": 0,
-        "Soylent": 0
+        "Soylent": 0,
 }
 #define calamities
 calamities = {
@@ -99,7 +100,7 @@ calamities = {
         12: "Terminator",
         13: "God",
         14: "Satan",
-        15: "Peyote Trip"
+        15: "Peyote Trip",
 }
 
 CalamityDefinitions = {
@@ -118,7 +119,7 @@ CalamityDefinitions = {
         "Terminator": "Terminator showed up from the future to kill you. You need to disguise yourself with a new dress or he kills you.",
         "God": "God killed you. You're dead.",
         "Satan": "Satan has decided to give you one last chance. Sit out for 2 rounds. The group cannot use your supplies.",
-        "Peyote Trip": "You ate some random Peyote that you found along the way. You'll need half a pizza to get over this or you'll die."
+        "Peyote Trip": "You ate some random Peyote that you found along the way. You'll need half a pizza to get over this or you'll die.",
 }
 
 ascii = {
@@ -160,13 +161,6 @@ ascii = {
     "vicodin" : "ascii_pics/vicodin",
 }
 
-class Player:
-    def __init__(self, number, name, supplies, trail_options):
-        self.name = name
-        self.number = number
-        self.supplies = supplies
-        self.trail_options = trail_options
-
 # Select number of players
 def select_players():
     numPlayers = 0
@@ -184,76 +178,41 @@ def select_players():
 
 # Give each player a name and store it in a dictionary.
 def name_players(num_players):
-    players = {}
+    players = []
     for i in range(1, num_players + 1):
         name = input(f"Enter a name for Player {i}: ")
-        players[i] = name
+        players.append(name)
     return players
 
 def create_players(players):
     player_list = []
-    for index in range(len(players)):
+    for i in range(len(players)):
         supps = {}
         trails = {}
-        for i in range(5):
-            trails[trailOptions[randint(0, 14)]] = 1
-            supps[supplies[randint(0, 10)]] = 1
-        player = Player(index, players[index + 1], supps, trails)
+        for j in range(5):
+            key = randint(0, 14)
+            if trailOptions[key] in trails:
+                trails[trailOptions[key]] += 1
+            else :
+                trails[trailOptions[key]] = 1
+
+            kei = randint(0, 10)
+            if supplies[kei] in supps:
+                supps[supplies[kei]] += 1
+            else :
+                supps[supplies[kei]] = 1
+
+        player = Player(i + 1, players[i], supps, trails)
         player_list.append(player)
     return player_list
-
-# Assign group assets. 5 random assets per player.
-def assign_assets(num_players):
-    for i in range(num_players * 5):
-        groupTrailOptions[trailOptions[randint(0, 14)]] += 1
-        groupSupplies[supplies[randint(0, 10)]] += 1
 
 # Print player numbers and names.
 def print_players(player_list):
     print("The Players are:")
     for player in player_list:
-        print(f"Player {player.number}: {player.name}.")
-        print(f"\n{player.name} has these supplies:")
-        for i in player.supplies:
-            print(f"{i}: {player.supplies[i]}")
-        print(f"\n{player.name} has these trail options:")
-        for i in player.trail_options:
-            print(f"{i}: {player.trail_options[i]}")
-
-# Print group trail options.
-def print_options(groupTrailOptions):
-    print("The group has these Trail Options:")
-    for key in groupTrailOptions:
-        if groupTrailOptions[key] != 0:
-            print(f"{key}: {groupTrailOptions[key]}")
-
-# Print group supplies.
-def print_supplies(groupSupplies):
-    print("The Group has these supplies:")
-    for key in groupSupplies:
-        if groupSupplies[key] != 0:
-            print(f"{key}: {groupSupplies[key]}")
-
-# randomly increment 1 group supply
-def increment_supplies():
-    groupSupplies[supplies[randint(0, 10)]] += 1
-    return f"You have received supplies.", print_supplies(groupSupplies)
-
-# decrement 1 from the group supply that was used
-def decrement_supplies():
-    pass
-
-# randomly increment either group supply or trail option by 1
-def increment_random_asset():
-    pass
-
-# decrement 1 from the trail option that was used
-def decrement_trail_option():
-    pass
-
-# randomly increment 1 trail option
-def increment_trail_option():
-    pass
+        print(player)
+        wait()
+        system('clear')
 
 # print an ascii art file
 def print_ascii(asciiFile):
@@ -320,12 +279,6 @@ def game_setup():
     print_players(player_list)
     print('\n')
 
-    # Assign supplies and trail options to the team.
-    assign_assets(num_players)
-    print_options(groupTrailOptions)
-    print('\n')
-    print_supplies(groupSupplies)
-
     wait()
     system('clear')
 
@@ -341,10 +294,10 @@ def game_setup():
 
 # execute and reveal consequences of choosen trial. Returns number of players left.
 def execute_trail(trail):
-    choose_calamity()
-    execute_calamity()
-    choose_supply()
-    execute_supply()
+    # choose_calamity()
+    # execute_calamity()
+    # choose_supply()
+    # execute_supply()
     pass
 
 # A random calamity is choosen
@@ -354,15 +307,6 @@ def choose_calamity():
 # execute and reveal consequences of choosen calamity. Returns dict of current calamities.
 def execute_calamity(calamity):
     pass
-
-# players choose a supply
-def choose_supply():
-    pass
-
-# execute and reveal consequences of supply use
-def execute_supply():
-    pass
-
 
 # Start Game Play
 def main():
