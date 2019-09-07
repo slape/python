@@ -8,17 +8,17 @@ from run_func import *
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
-# Game setup and opening screens
-def game_setup():
+def game_setup() -> list[Player]:
+    """Sets up game and presents opening screens."""
     print_ascii(ascii['trail'])
     print("Welcome to the Python Trial.\n")
     sleep(3)
     system('clear')
 
     # Select players and add them to a dictionary.
-    num_players = select_players()
-    players = name_players(num_players)
-    player_list = create_players(players)
+    num_players: int = select_players()
+    players: list[str] = name_players(num_players)
+    player_list: list[Player] = create_players(players)
     print_players(player_list)
     print('\n')
 
@@ -35,47 +35,50 @@ def game_setup():
     wait()
     return player_list
 
-# Select number of players
-def select_players():
-    numPlayers = 0
-    while numPlayers < 1:
+
+def select_players() -> int:
+    """Allows player to select a number of players between 1 and 4."""
+    while True:
         try:
-            numPlayers = int(eval(input("Enter number of players (1-4): ")))
-            if 0 < numPlayers < 5:
-                return numPlayers
-                print('\n')
-                break
-            else :
-                print("That is not a number between 1-4 Try again.")
+            num_players: int = int(input("Enter number of players (1-4): "))
         except ValueError:
             print("That is not a number between 1-4. Try again.")
+            continue
+        else:
+            if 0 < num_players < 5:
+                return num_players
+                break
+            else:
+                print("That is not a number between 1-4. Try again.")
+                continue
 
-# Give each player a name and store it in a dictionary.
-def name_players(num_players):
-    players = []
+def name_players(num_players: int) -> list[str]:
+    """Give each player a name and store them in a list."""
+    players: list[str] = []
     for i in range(1, num_players + 1):
-        name = input(f"Enter a name for Player {i}: ")
+        name: str = input(f"Enter a name for Player {i}: ")
         players.append(name)
     return players
 
-def create_players(players):
-    player_list = []
+def create_players(players: list[str]) -> list[Player]:
+    """Create list of player objects."""
+    player_list: list[Player] = []
     for i in enumerate(players):
-        supply_options = {}
-        trail_options = {}
+        supply_options: dict[str, int] = {}
+        trail_options: dict[str, int] = {}
         for j in range(5):
-            choic = choice(list(trails))
+            choic: str = choice(list(trails))
             if choic in trail_options:
                 trail_options[choic] += 1
             else :
                 trail_options[choic] = 1
 
-            choi = choice(supplies)
+            choi: str = choice(supplies)
             if choi in supply_options:
                 supply_options[choi] += 1
             else :
                 supply_options[choi] = 1
-        player_num = i[0] + 1
+        player_num: int = i[0] + 1
         player = Player(player_num, players[i[0]], supply_options, trail_options)
         player_list.append(player)
     return player_list

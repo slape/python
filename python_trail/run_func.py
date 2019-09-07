@@ -16,7 +16,7 @@ def print_players(players: list[Player]) -> None:
         wait()
         system('clear')
 
-def print_ascii(asciiFile) -> None:
+def print_ascii(asciiFile: str) -> None:
     """prints ascii art from text file."""
     with open(asciiFile, "r") as f:
         for i in f:
@@ -42,10 +42,10 @@ def wait() -> None:
     """Waits for player to hit enter."""
     input("Press Enter to Continue...")
 
-def present_calamity():
+def present_calamity() -> None:
     """Presents Calamity based on trail chosen."""
     pass
 
-def calamity_check():
+def calamity_check() -> list:
     """Checks for current calamities and kills a player if needed."""
     pass
