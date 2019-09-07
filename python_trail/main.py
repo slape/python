@@ -14,10 +14,10 @@ def main():
     trails_traversed: int = 0
     while len(player_list) > 0:
         for player in player_list:
-            player.choose_trail()
-            present_calamity()
-            player.choose_supply()
-            calamity_check()
+            player.choose_trail() #TODO
+            player.trail_consequence() #TODO
+
+            player.calamity_check() #TODO
             trails_traversed += 1
         if trails_traversed == 20:
             break

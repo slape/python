@@ -1,4 +1,6 @@
+from __future__ import annotations
 from dataclasses import dataclass
+from typing import Any, Dict, List
 
 @dataclass
 class Player:
@@ -6,76 +8,104 @@ class Player:
     name: str
     supplies: dict
     trail_options: dict
+    calamities: dict
 
     @property
-    # randomly increment 1 supply
-    def increment_supplies(self):
-        choic = choice(supplies)
+    def increment_supplies(self) -> str:
+        """Randomly increment a supply option."""
+        choic: str = choice(supplies)
         if choic in self.supplies:
             self.supplies[choic] += 1
         else :
             self.supplies[choic] += 1
         return f'You have received {choic}.'
 
-    # randomly increment 1 trail option
-    def increment_trail_option(self):
-        choic = choice(list(trails))
+    def increment_trail_option(self) -> str:
+        """Randomly increment a trail option."""
+        choic: str = choice(list(trails))
         if choic in self.trail_options:
             trail_options[choic] += 1
         else :
             trail_options[choic] = 1
         return f'You have received {choic}.'
 
-    # player choose a supply
-    def choose_supply(self):
+    def choose_trail(self) -> str:
+        """Player Chooses a Trail or a random trail is chosen for them."""
+        if len(self.trail_options) > 0:
+            pass
+            #print you have these Options
+
+            # print choose an option
+
+            # take in option choise
+
+            # print you chose option -
+
+            # return option
+
+    def trail_consequence(consequence: str) -> None:
+        """Calculates the consequences of a trail."""
+        # print consequence
+        # parse consequence
+        # calculate consequence
         pass
 
-    # remove a supply that was used
-    def decrement_supplies(self):
+    def choose_supply(self) -> str:
+        """Player chooses a supply to use."""
+        #print you have these Options
+
+        # print choose an option
+
+        # take in option choise
+
+        # print you chose option -
+
+        # return option
         pass
 
-    # player choose a trai
-    def choose_trail(self):
+    def decrement_supplies(self, supply: str) -> None:
+        """Player looses a supply that they choose to use."""
+        # remove given supply from supplies
         pass
 
-    # def choose_trail():
-    #     if len(groupTrailOptions) > 0:
-    #         print_options(groupTrailOptions)
-    #         print('\n')
-    #         for option in trailOptions.keys:
-    #             if option in groupTrailOptions:
-    #                 print(option)
-    #         option = input("Choose a trail option: ")
-    #         print(f"You chose option {option}: {trailOption[option]}.")
-    #         decrement_trail()
-    #     else:
-    #         print("The group is out of options.")
-    #         input("Press Enter to roll the dice.")
-    #         option = roll_dice(14)
-    #         if option == 11:
-    #             print(f"You rolled an {option}! Receive one Trail Option.")
-    #             incerment_trail()
-    #         elif option == 12:
-    #             print(f"You rolled a {option}! Receive one Supply.")
-    #             increment_supplies()
-    #         else :
-    #             print(f"You rolled a {option}: {trailOption[option]}.")
-    #     return option
 
-    # remove a trail option that was used
-    def decrement_trail_option(self):
+    def decrement_trail_option(self, trial: str) -> None:
+        """Player looses a trail option that they choose to use."""
+        # remove given trail option from trail options
         pass
 
-    # print player assets
+    def assign_calamity(self, calamity: str) -> None:
+        """Assigns Calamity based on trail chosen."""
+        pass
+
+    def calamity_check(self) -> list:
+        """Checks for current calamities and kills a player if needed."""
+        pass
+
     def __repr__(self):
+        """Prints out the players trail options and supplies."""
         out = ''
+        out += f'\nPlayer {self.number}: {self.name}\n'
 
-        out += f'Player {self.number}: {self.name}\n'
-        out += f'\nTrail Options:\n'
-        for item in self.trail_options:
-            out += f' {item}: {self.trail_options[item]}\n'
-        out += f'\nSupplies:\n'
-        for item in self.supplies:
-            out += f' {item}: {self.supplies[item]}\n'
+        if len(self.trail_options) > 0:
+            out += f'\nTrail Options:\n'
+            for item in self.trail_options:
+                out += f' {item}: {self.trail_options[item]}\n'
+        else:
+            out += f'\nSadly, {self.name} is out of trail options.\n'
 
+
+        if len(self.supplies) > 0:
+            out += f'\nSupplies:\n'
+            for item in self.supplies:
+                out += f' {item}: {self.supplies[item]}\n'
+        else:
+            out += f'\nSadly, {self.name} is out of supplies.\n'
+
+        if len(self.calamities) > 0:
+            out += f'\nCalamities:\n'
+            for item in self.calamities:
+                out += f' {item}: {self.calamities[item]}\n'
+        else:
+            out += f'\nRejoice! {self.name} is free of calamities.\n'
         return out

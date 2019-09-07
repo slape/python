@@ -41,11 +41,3 @@ def roll_dice(total_avail: int) -> int:
 def wait() -> None:
     """Waits for player to hit enter."""
     input("Press Enter to Continue...")
-
-def present_calamity() -> None:
-    """Presents Calamity based on trail chosen."""
-    pass
-
-def calamity_check() -> list:
-    """Checks for current calamities and kills a player if needed."""
-    pass

@@ -66,6 +66,7 @@ def create_players(players: list[str]) -> list[Player]:
     for i in enumerate(players):
         supply_options: dict[str, int] = {}
         trail_options: dict[str, int] = {}
+        calamities: dict[str, str] = {}
         for j in range(5):
             choic: str = choice(list(trails))
             if choic in trail_options:
@@ -79,6 +80,6 @@ def create_players(players: list[str]) -> list[Player]:
             else:
                 supply_options[choi] = 1
         player_num: int = i[0] + 1
-        player = Player(player_num, players[i[0]], supply_options, trail_options)
+        player = Player(player_num, players[i[0]], supply_options, trail_options, calamities)
         player_list.append(player)
     return player_list

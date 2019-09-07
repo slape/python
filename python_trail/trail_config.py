@@ -41,7 +41,7 @@ Calamities = {
     "Fractal Snake": "You were bitten by a Fractal Snake. You'll need bullets for your 9 to kill it before it kills you.",
     "Treason": "You're being accused of Treason. You'll need to ward off this bad luck with a dream catcher or you'll die.",
     "Extreme Cold": "Beat the cold by drinking as much beer as you can. You'll need a keg or you'll die.",
-    "Misbehaving Oxen": "You Oxen were misbehaving, so another member killed them. You'll need 2 more Oxen or everyone dies.",
+    "Misbehaving Oxen": "Your Oxen were misbehaving, so another member killed them. You'll need 2 more Oxen or everyone dies.",
     "Measles": "You have the Measles. Lose a turn unless you have some Vicodin to keep going.",
     "Dysentery": "You died of Dysentery.",
     "Flat Tire": "Your steam mobile has a flat tire. You'll need spare parts to fix it or everyone dies.",
