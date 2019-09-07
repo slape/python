@@ -16,15 +16,15 @@ def print_players(players: list[Player]) -> None:
         wait()
         system('clear')
 
-# print an ascii art file
 def print_ascii(asciiFile) -> None:
+    """prints ascii art from text file."""
     with open(asciiFile, "r") as f:
         for i in f:
             print(i),
             sleep(.1)
 
-# roll the dice. Return a random number between 2 and 12.
 def roll_dice(total_avail: int) -> int:
+    """Simulates dice roll. Returns random value."""
     total: int = int(total_avail / 2) + 1
     first_roll: int = randint(1, total)
     second_roll: int = randint(1, total)
@@ -38,14 +38,14 @@ def roll_dice(total_avail: int) -> int:
     roll: int = first_roll + second_roll
     return roll
 
-# Wait for player input
 def wait() -> None:
+    """Waits for player to hit enter."""
     input("Press Enter to Continue...")
 
-# A random calamity is choosen
 def present_calamity():
+    """Presents Calamity based on trail chosen."""
     pass
 
-# execute and reveal consequences of choosen calamity. Returns dict of current calamities.
 def calamity_check():
+    """Checks for current calamities and kills a player if needed."""
     pass
