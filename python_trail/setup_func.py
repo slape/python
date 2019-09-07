@@ -25,14 +25,13 @@ def game_setup() -> list[Player]:
     system('clear')
 
     # Starting message
+    print_ascii(ascii['death'])
+
     print("\nThis journey begins in a dense forrest.")
     print("Your goal is to make it to the end of the Python Trail.\n")
-    sleep(2)
-    system('clear')
-
-    print_ascii(ascii['death'])
     print("The Trail is harsh. Good Luck.")
     wait()
+    system('clear')
     return player_list
 
 
