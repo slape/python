@@ -1,9 +1,12 @@
+from __future__ import annotations
 from time import sleep
 from random import randint, choice
 from os import system
 from models import Player
 from trail_config import *
 from run_func import *
+from dataclasses import dataclass
+from typing import Any, Dict, List
 
 # Game setup and opening screens
 def game_setup():
