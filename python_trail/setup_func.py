@@ -70,13 +70,13 @@ def create_players(players: list[str]) -> list[Player]:
             choic: str = choice(list(trails))
             if choic in trail_options:
                 trail_options[choic] += 1
-            else :
+            else:
                 trail_options[choic] = 1
 
             choi: str = choice(supplies)
             if choi in supply_options:
                 supply_options[choi] += 1
-            else :
+            else:
                 supply_options[choi] = 1
         player_num: int = i[0] + 1
         player = Player(player_num, players[i[0]], supply_options, trail_options)
