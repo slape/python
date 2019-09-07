@@ -10,21 +10,21 @@ class Player:
     @property
     # randomly increment 1 supply
     def increment_supplies(self):
-        key = randint(0, 10)
-        if supplies[key] in self.supplies:
-            self.supplies[supplies[key]] += 1
+        choic = choice(supplies)
+        if choic in self.supplies:
+            self.supplies[choic] += 1
         else :
-            self.supplies[supplies[key]] += 1
-        return f'You have received {supplies[key]}.'
+            self.supplies[choic] += 1
+        return f'You have received {choic}.'
 
     # randomly increment 1 trail option
     def increment_trail_option(self):
-        key = randint(0, 14)
-        if trailOptions[key] in self.trail_options:
-            trail_options[trailOptions[key]] += 1
+        choic = choice(list(trails))
+        if choic in self.trail_options:
+            trail_options[choic] += 1
         else :
-            trail_options[trailOptions[key]] = 1
-        return f'You have received {trailOptions[key]}.'
+            trail_options[choic] = 1
+        return f'You have received {choic}.'
 
     # player choose a supply
     def choose_supply(self):

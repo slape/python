@@ -1,5 +1,5 @@
 from time import sleep
-from random import randint
+from random import randint, choice
 from os import system
 from models import Player
 from trail_config import *

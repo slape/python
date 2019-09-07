@@ -1,5 +1,5 @@
 from time import sleep
-from random import randint
+from random import randint, choice
 from os import system
 from models import Player
 from trail_config import *
@@ -57,22 +57,22 @@ def name_players(num_players):
 
 def create_players(players):
     player_list = []
-    for i in range(len(players)):
-        supps = {}
-        trails = {}
+    for i in enumerate(players):
+        supply_options = {}
+        trail_options = {}
         for j in range(5):
-            key = randint(0, 14)
-            if trailOptions[key] in trails:
-                trails[trailOptions[key]] += 1
+            choic = choice(list(trails))
+            if choic in trail_options:
+                trail_options[choic] += 1
             else :
-                trails[trailOptions[key]] = 1
+                trail_options[choic] = 1
 
-            kei = randint(0, 10)
-            if supplies[kei] in supps:
-                supps[supplies[kei]] += 1
+            choi = choice(supplies)
+            if choi in supply_options:
+                supply_options[choi] += 1
             else :
-                supps[supplies[kei]] = 1
-
-        player = Player(i + 1, players[i], supps, trails)
+                supply_options[choi] = 1
+        player_num = i[0] + 1
+        player = Player(player_num, players[i[0]], supply_options, trail_options)
         player_list.append(player)
     return player_list
