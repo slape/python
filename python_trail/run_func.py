@@ -2,11 +2,9 @@ from __future__ import annotations
 from time import sleep
 from random import randint, choice
 from os import system
-from models import Player
-from trail_config import *
-from setup_func import *
 from dataclasses import dataclass
 from typing import Any, Dict, List
+from trail_config import *
 
 def print_players(players: list[Player]) -> None:
     """Print player numbers and names."""
@@ -25,10 +23,10 @@ def print_ascii(asciiFile: str) -> None:
 
 def roll_dice(total_avail: int) -> int:
     """Simulates dice roll. Returns random value."""
-    total: int = int(total_avail / 2) + 1
+    total: int = int(total_avail / 2)
     first_roll: int = randint(1, total)
     second_roll: int = randint(1, total)
-    print ("Rolling...")
+    print("Rolling...")
     print_ascii(ascii['dice'])
     sleep(2)
     print(f"The first die roll is: {first_roll}.")

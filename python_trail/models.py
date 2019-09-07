@@ -5,7 +5,7 @@ from os import system
 from trail_config import *
 from typing import Any, Dict, List
 from dataclasses import dataclass
-
+from run_func import *
 
 @dataclass
 class Player:
@@ -48,14 +48,26 @@ class Player:
             print(f'\nYou chose option {choice}:')
             print(f' {trail}.')
             print(f' {consequence}')
-            input('Press enter to continue...')
+            wait()
 
             system('clear')
             self.decrement_trail_option(trail)
             return consequence
 
         else:
-            pass
+            print(f'Sadly, {self.name} has no trail options.')
+            input(f'Press enter to roll the dice.')
+            roll = roll_dice(14)
+            trail = list(trails)[roll]
+            consequence = trails[trail]
+
+            print(f'\nYou get option:')
+            print(f' {trail}.')
+            print(f' {consequence}')
+            wait()
+
+            system('clear')
+            return consequence
 
     def decrement_trail_option(self, trail: str) -> None:
         """Player looses a trail option that they choose to use."""
