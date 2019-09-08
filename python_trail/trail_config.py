@@ -1,21 +1,21 @@
 # Define Trail Options (14 total options)
-trails = {
-    "Fort ahead": "You have arrived at a Fort. Collect 2 Supplies.",
-    "Town ahead": "You have arrived at a Town. Collect 1 Supply, or Remove 1 Calamity.",
-    "Calm road to the left": "As you were.",
-    "Calm road to the right": "No trouble here, partner.",
-    "Calm road straight ahead": "Remain calm. Carry on.",
-    "Treacherous road to the right": "Receive one calamity.",
-    "Treacherous road to the left": "Receive one calamity.",
-    "Treacherous road straight ahead": "Receive one calamity.",
-    "Winding road straight ahead": "Receive one calamity.",
-    "Road crosses a river to the left": "Roll and Even Number to Ford the River. Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.",
-    "Road crosses a river to the right": "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply.",
-    "Winding road crosses a river straight ahead": "Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.",
-    "Treacherous road crosses a river straight ahead": "Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player",
-    "Treacherous road crosses a river to the left": "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply",
-    "Treacherous road crosses a river to the right": "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply.",
-}
+trails = [
+    ["Fort ahead!", "You have arrived at a Fort. Collect 1 supply.", "supplies", None, False],
+    ["Town ahead!", "You have arrived at a Town. Remove 1 Calamity.", "calamity", None, False],
+    ["Calm road to the left.", "As you were.", "pass", None, False],
+    ["Calm road to the right.", "No trouble here, partner.", "pass", None, False],
+    ["Calm road straight ahead.", "Remain calm. Carry on.", "pass", None, False],
+    ["Treacherous road to the right.", "Receive one calamity.", None, None, True],
+    ["Treacherous road to the left.", "Receive one calamity.", None, None, True],
+    ["Treacherous road straight ahead.", "Receive one calamity.", None, None, True],
+    ["Winding road straight ahead.", "Receive one calamity.", None, None, True],
+    ["Road crosses a river to the left.", "Roll and Even Number to Ford the River. Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.", None, 'even', False],
+    ["Road crosses a river to the right.", "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply.", None, 'odd', False],
+    ["Winding road crosses a river straight ahead.", "Roll and Even Number to Ford the River. Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.", None, 'even', False],
+    ["Treacherous road crosses a river straight ahead.", "Roll and Even Number to Ford the River. Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.", None, 'even', False],
+    ["Treacherous road crosses a river to the left.", "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply.", None, 'odd', False],
+    ["Treacherous road crosses a river to the right.", "Roll and Even Number to Ford the River. Roll an ODD number and lose a supply.", None, 'odd', False],
+    ]
 
 # Define Supply Options (10 total options)
 supplies = [

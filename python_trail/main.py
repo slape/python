@@ -7,6 +7,7 @@ from trail_config import *
 from setup_func import *
 from run_func import *
 from typing import Any, Dict, List
+from trails import Trail
 
 # Start Game Play
 def main():
@@ -14,10 +15,18 @@ def main():
     trails_traversed: int = 0
     while len(player_list) > 0:
         for player in player_list:
-            player.choose_trail() #TODO
-            player.trail_consequence() #TODO
+            trail = player.choose_trail()
+            print(type(trail))
+            print(trail)
+            print(trail.desc)
+            print(trail.player)
+            print(trail.reward)
+            print(trail.dice)
+            print(trail.punish)
+            wait()
+            trail.traverse_trail()
+            wait()
 
-            player.calamity_check() #TODO
             trails_traversed += 1
         if trails_traversed == 20:
             break

@@ -6,14 +6,15 @@ from trail_config import *
 from typing import Any, Dict, List
 from dataclasses import dataclass
 from run_func import *
+from trails import Trail
 
 @dataclass
 class Player:
     number: int
     name: str
-    supplies: dict
-    trail_options: dict
-    calamities: dict
+    supplies: list
+    trail_options: list[Trail]
+    calamities: list[list]
 
     @property
     def increment_supplies(self) -> str:
@@ -34,44 +35,44 @@ class Player:
             trail_options[choic] = 1
         return f'You have received {choic}.'
 
-    def choose_trail(self) -> str:
-        """Player Chooses a Trail or a random trail is chosen for them."""
+    def choose_trail(self) -> Trail:
+        """Player Chooses a Trail object or a random trail is chosen for them."""
         if len(self.trail_options) > 0:
             print(f'\n{self.name} has these trail options.')
-            for i in enumerate(self.trail_options.keys()):
-                print(f'{i[0]}: {i[1]}.')
+            for i in enumerate(self.trail_options):
+                print(f'{i[0]}: {i[1]}')
 
-            choice = int(input(f'\nChoose an option: '))
-            trail = list(self.trail_options.keys())[choice]
-            consequence = trails[trail]
+            index: int = int(input(f'\nChoose an option: '))
+            trail: Trail = self.trail_options[index]
+            print(type(self.trail_options))
+            print(type(trail))
 
-            print(f'\nYou chose option {choice}:')
-            print(f' {trail}.')
-            print(f' {consequence}')
+            print(f'\nYou chose option: {index}')
+            print(f'{trail}\n {trail.desc}\n')
             wait()
 
             system('clear')
-            self.decrement_trail_option(trail)
-            return consequence
+            del self.trail_options[index]
+            return trail
 
         else:
             print(f'Sadly, {self.name} has no trail options.')
             input(f'Press enter to roll the dice.')
-            roll = roll_dice(14)
-            trail = list(trails)[roll]
-            consequence = trails[trail]
-
+            roll: int = roll_dice(14)
+            trail: Trail = Trail(
+                trails[roll][0],
+                trails[roll][1],
+                self.name,
+                trails[roll][2],
+                trails[roll][3],
+                trails[roll][4]
+                )
             print(f'\nYou get option:')
-            print(f' {trail}.')
-            print(f' {consequence}')
+            print(trail)
+
             wait()
-
             system('clear')
-            return consequence
-
-    def decrement_trail_option(self, trail: str) -> None:
-        """Player looses a trail option that they choose to use."""
-        self.trail_options.pop(trail)
+            return trail
 
     def trail_consequence(consequence: str) -> None:
         """Calculates the consequences of a trail."""
@@ -117,7 +118,7 @@ class Player:
         if len(self.trail_options) > 0:
             out += f'\nTrail Options:\n'
             for item in self.trail_options:
-                out += f' {item}: {self.trail_options[item]}\n'
+                out += f' {item}'
         else:
             out += f'\nSadly, {self.name} is out of trail options.\n'
 
@@ -125,7 +126,7 @@ class Player:
         if len(self.supplies) > 0:
             out += f'\nSupplies:\n'
             for item in self.supplies:
-                out += f' {item}: {self.supplies[item]}\n'
+                out += f' {item}\n'
         else:
             out += f'\nSadly, {self.name} is out of supplies.\n'
 

@@ -7,6 +7,7 @@ from trail_config import *
 from run_func import *
 from dataclasses import dataclass
 from typing import Any, Dict, List
+from trails import Trail
 
 def game_setup() -> list[Player]:
     """Sets up game and presents opening screens."""
@@ -60,25 +61,38 @@ def name_players(num_players: int) -> list[str]:
     return players
 
 def create_players(players: list[str]) -> list[Player]:
-    """Create list of player objects."""
+    """Create list of player objects with
+    assigned Trail Objects and Supplies."""
+
     player_list: list[Player] = []
+
     for i in enumerate(players):
-        supply_options: dict[str, int] = {}
-        trail_options: dict[str, int] = {}
-        calamities: dict[str, str] = {}
+        supply_options: list[str] = []
+        trail_options: list[Trail] = []
+        calamities: dict[str, str] = []
         for j in range(5):
-            choic: str = choice(list(trails))
-            if choic in trail_options:
-                trail_options[choic] += 1
-            else:
-                trail_options[choic] = 1
+            choic: str = choice(trails)
+            trail = Trail(
+                choic[0],
+                choic[1],
+                i[1],
+                choic[2],
+                choic[3],
+                choic[4]
+                )
+
+            trail_options.append(trail)
 
             choi: str = choice(supplies)
-            if choi in supply_options:
-                supply_options[choi] += 1
-            else:
-                supply_options[choi] = 1
+            supply_options.append(choi)
         player_num: int = i[0] + 1
-        player = Player(player_num, players[i[0]], supply_options, trail_options, calamities)
+        player = Player(
+            player_num,
+            players[i[0]],
+            supply_options,
+            trail_options,
+            calamities
+            )
+
         player_list.append(player)
     return player_list
