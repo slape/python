@@ -75,13 +75,6 @@ class Player:
             system('clear')
             return trail
 
-    def trail_consequence(consequence: str) -> None:
-        """Calculates the consequences of a trail."""
-        # print consequence
-        # parse consequence
-        # calculate consequence
-        pass
-
     def choose_supply(self) -> str:
         """Player chooses a supply to use."""
         #print you have these Options
@@ -93,21 +86,6 @@ class Player:
         # print you chose option -
 
         # return option
-        pass
-
-    def decrement_supplies(self, supply: str) -> None:
-        """Player looses a supply that they choose to use."""
-        # remove given supply from supplies
-        pass
-
-
-
-    def assign_calamity(self, calamity: str) -> None:
-        """Assigns Calamity based on trail chosen."""
-        pass
-
-    def calamity_check(self) -> list:
-        """Checks for current calamities and kills a player if needed."""
         pass
 
     def __repr__(self):

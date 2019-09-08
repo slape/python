@@ -1,19 +1,4 @@
-trail_consequences = [
-    Roll and Even Number to Ford the River. Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.
-    Roll and Even Number to Ford the River. Roll an ODD number and lose a supply.
-    Roll a 1 and die by drowning. Roll a 3 or 5 and play passes to the next player.
-    Receive one calamity.
-]
 
-trail_rewards = [
-    Collect 2 Supplies.
-    Collect 1 Supply
-    Remove 1 Calamity.
-    As you were.
-    No trouble here, partner.
-    Remain calm. Carry on.
-
-]
 
 calamity_consequences = [
 Kenny killed you.

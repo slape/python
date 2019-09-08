@@ -33,24 +33,24 @@ supplies = [
 ]
 
 # Define Calamities (15 total options)
-Calamities = {
-    "Kenny": "Kenny killed you.",
-    "Dino": "Dino ate all your pizza and beer. You'll need a Mace to kill him and eat him or you'll die.",
-    "Eating Disorder": "You've developed an eating disorder. You'll need a partially eaten birthday cake, half a pizza and some Soylent to survive.",
-    "Soylent": "Rejoice! You have found some extra Soylent.",
-    "Fractal Snake": "You were bitten by a Fractal Snake. You'll need bullets for your 9 to kill it before it kills you.",
-    "Treason": "You're being accused of Treason. You'll need to ward off this bad luck with a dream catcher or you'll die.",
-    "Extreme Cold": "Beat the cold by drinking as much beer as you can. You'll need a keg or you'll die.",
-    "Misbehaving Oxen": "Your Oxen were misbehaving, so another member killed them. You'll need 2 more Oxen or everyone dies.",
-    "Measles": "You have the Measles. Lose a turn unless you have some Vicodin to keep going.",
-    "Dysentery": "You died of Dysentery.",
-    "Flat Tire": "Your steam mobile has a flat tire. You'll need spare parts to fix it or everyone dies.",
-    "Out of Steam": "Your steam mobile ran out of steam. You'll need to have 2 Oxen to pull it or everyone dies.",
-    "Terminator": "Terminator showed up from the future to kill you. You need to disguise yourself with a new dress or he kills you.",
-    "God": "God killed you. You're dead.",
-    "Satan": "Satan has decided to give you one last chance. Sit out for 2 rounds. The group cannot use your supplies.",
-    "Peyote Trip": "You ate some random Peyote that you found along the way. You'll need half a pizza to get over this or you'll die.",
-}
+Calamities = [
+    ["Kenny", "Kenny killed you.", 'died'],
+    ["Dino", "Dino ate all your pizza and beer. \nYou'll need a Mace to kill him and eat him or you'll die.", 'mace'],
+    ["Starving", "You're starving to death. \nYou'll need a partially eaten birthday cake to survive.", 'birthday'],
+    ["Soylent", "Rejoice! You have found some extra Soylent.", 'soylent'],
+    ["Fractal Snake", "You were bitten by a Fractal Snake. \nYou'll need bullets for your 9 to kill it before it kills you.", 'bullets'],
+    ["Treason", "You're being accused of Treason. \nYou'll need to ward off this bad luck with a dream catcher or you'll die.", 'dream'],
+    ["Extreme Cold", "Beat the cold by drinking as much beer as you can. \nYou'll need a keg or you'll die.", 'keg'],
+    ["Misbehaving Oxen", "Your Oxen were misbehaving, so another member killed them. \nYou'll need another Oxen or everyone dies.", 'oxen'],
+    ["Measles", "You have the Measles. \nLose a turn unless you have some Vicodin to keep going.", 'vicodin'],
+    ["Dysentery", "You died of Dysentery.", 'died'],
+    ["Flat Tire", "Your steam mobile has a flat tire. \nYou'll need spare parts to fix it or everyone dies.", 'parts'],
+    ["Out of Steam", "Your steam mobile ran out of steam. \nYou'll need to have an Oxen to pull it or everyone dies.", 'oxen'],
+    ["Terminator", "Terminator showed up from the future to kill you. \nYou need to disguise yourself with a new dress or he kills you.", 'dress'],
+    ["God", "God killed you. You're dead.", 'died'],
+    ["donQ", "Don Qixote has crossed your path and is demanding some Soylent or he kills you.", 'tnelyos'],
+    ["Peyote Trip", "You ate some random Peyote that you found along the way. \nYou'll need half a pizza to get over this or you'll die.", 'pizza'],
+]
 
 # Define paths to ascii picture files
 ascii = {
