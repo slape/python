@@ -24,6 +24,7 @@ def print_ascii(asciiFile: str) -> None:
 
 def roll_dice(total_avail: int) -> int:
     """Simulates dice roll. Returns random value."""
+    system('clear')
     if total_avail > 6:
         total: int = int(total_avail / 2)
         first_roll: int = randint(1, total)

@@ -38,15 +38,14 @@ class Player:
     def choose_trail(self) -> Trail:
         """Player Chooses a Trail object or a random trail is chosen for them."""
         if len(self.trail_options) > 0:
+            system('clear')
             print(f'\n{self.name} has these trail options.')
             for i in enumerate(self.trail_options):
                 print(f'{i[0]}: {i[1]}')
 
             index: int = int(input(f'\nChoose an option: '))
             trail: Trail = self.trail_options[index]
-            print(type(self.trail_options))
-            print(type(trail))
-
+            system('clear')
             print(f'\nYou chose option: {index}')
             print(f'{trail}\n {trail.desc}\n')
             wait()
@@ -56,6 +55,7 @@ class Player:
             return trail
 
         else:
+            system('clear')
             print(f'Sadly, {self.name} has no trail options.')
             input(f'Press enter to roll the dice.')
             roll: int = roll_dice(14)
@@ -67,8 +67,9 @@ class Player:
                 trails[roll][3],
                 trails[roll][4]
                 )
+            system('clear')
             print(f'\nYou get option:')
-            print(trail)
+            print(f'{trail}\n {trail.desc}\n')
 
             wait()
             system('clear')

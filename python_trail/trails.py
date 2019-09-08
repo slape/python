@@ -29,7 +29,6 @@ class Trail:
                 print(f'{self.player} has forded the river.')
                 return 'continue'
 
-
         elif self.dice == 'odd':
             roll = roll_dice(6)
 
@@ -41,8 +40,7 @@ class Trail:
                 print(f'{self.player} has forded the river.')
                 return 'continue'
 
-
-        elif self.reward == 'supply':
+        elif self.reward == 'supplies':
             print(f'{self.player} has picked up a supply for the group.')
             return 'supply'
 
@@ -56,11 +54,8 @@ class Trail:
 
         elif self.reward == 'pass':
             return 'continue'
-
-        else:
-            return None
+            pass
 
     def __repr__(self):
         """Prints out the trail info."""
-
         return f'{self.name}\n'
