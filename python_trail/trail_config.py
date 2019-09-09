@@ -96,5 +96,5 @@ ascii = {
     'vicodin' : 'ascii_pics/vicodin',
     'grim' : 'ascii_pics/grim',
     'soylent'   : 'ascii_pics/soylent',
-    'end'   : 'ascii/end'
+    'end'   : 'ascii_pics/end',
 }

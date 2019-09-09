@@ -13,7 +13,7 @@ from trails import Trail
 def main():
     player_list: list[Player] = game_setup()
     trails_traversed: int = 0
-    while len(player_list) > 0 and trails_traversed < 20:
+    while len(player_list) > 0 and trails_traversed < 18:
         for player in player_list:
 
             print(player)
@@ -24,7 +24,7 @@ def main():
             if outcome == 'died':
                 player_list.remove(player)
                 trails_traversed += 1
-                if trails_traversed == 20:
+                if trails_traversed == 18:
                     break
                 continue
 
@@ -38,7 +38,7 @@ def main():
                 print_ascii(ascii[supply[1]])
                 print(f'{player.name} lost {supply[0]}')
                 trails_traversed += 1
-                if trails_traversed == 20:
+                if trails_traversed == 18:
                     break
                 wait()
                 continue
@@ -50,14 +50,14 @@ def main():
                 print_ascii(ascii[supply[1]])
                 print(f'{player.name} gained {supply[0]}')
                 trails_traversed += 1
-                if trails_traversed == 20:
+                if trails_traversed == 18:
                     break
                 wait()
                 continue
 
             elif outcome == 'continue':
                 trails_traversed += 1
-                if trails_traversed == 20:
+                if trails_traversed == 18:
                     break
                 continue
 
@@ -75,7 +75,7 @@ def main():
                     print(f'\n{player.name} died from this calamity.')
                     player_list.remove(player)
                     trails_traversed += 1
-                    if trails_traversed == 20:
+                    if trails_traversed == 18:
                         break
                     continue
 
@@ -104,7 +104,7 @@ def main():
                         wait()
                 if find:
                     trails_traversed += 1
-                    if trails_traversed == 20:
+                    if trails_traversed == 18:
                         break
                     continue
                 else :
@@ -113,22 +113,34 @@ def main():
                     system('clear')
                     print_ascii(ascii[calamity[0].lower()])
                     print(f'{player.name} has died from this calamity.')
-                if trails_traversed == 20:
+
+                if trails_traversed == 18:
                     break
             wait()
             system('clear')
 
-    if trails_traversed == 20 and len(player_list) > 0:
+    if len(player_list) > 0:
+        system('clear')
         print_ascii(ascii['end'])
         print(f"Congratulations! You made it through the trail with {len(player_list)} players left.")
-        sleep(2)
+        print(f'Enjoy some smores by the camp fire.')
+        wait()
         system('clear')
+        print_ascii(ascii['snake'])
+        print('Thanks for playing the Python Trail.')
+        print('Game Over.')
+        sleep(3)
+
     else :
         system('clear')
         print_ascii(ascii['death'])
-        print(f"The Trail is harsh. Everyone died. Game over.")
-        sleep(2)
+        print(f"The Trail is harsh. Everyone died.")
+        wait()
         system('clear')
+        print_ascii(ascii['snake'])
+        print('Thanks for playing the Python Trail.')
+        print('Game Over.')
+        sleep(3)
 
 if __name__ == '__main__':
     main()
