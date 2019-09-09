@@ -41,7 +41,7 @@ class Player:
             system('clear')
             print(f'\n{self.name} has these trail options.')
             for i in enumerate(self.trail_options):
-                print(f'{i[0]}: {i[1]} {i[1].desc}\n')
+                print(f'{i[0] + 1}: {i[1]} {i[1].desc}\n')
 
             total = len(self.trail_options)
             while True:
@@ -51,16 +51,16 @@ class Player:
                     print("That is not a valid choice. Try again.")
                     continue
                 else:
-                    if 0 <= index < total:
+                    if 0 < index <= total:
                         break
                     else:
                         print("That is not a valid choice. Try again.")
                         continue
 
-            trail: Trail = self.trail_options[index]
+            trail: Trail = self.trail_options[index - 1]
             system('clear')
 
-            del self.trail_options[index]
+            del self.trail_options[index - 1]
             return trail
 
         else:

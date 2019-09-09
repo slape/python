@@ -62,8 +62,7 @@ def main():
                 continue
 
             elif outcome == 'calamity':
-                calamity = []
-                calamity += (choice(calamities))
+                calamity = (choice(calamities))
                 system('clear')
                 print_ascii(ascii[calamity[0].lower()])
                 print(f'{player.name} has received a calamity.\n')
@@ -130,7 +129,7 @@ def main():
         print('Thanks for playing the Python Trail.')
         print('Game Over.')
         sleep(3)
-
+        system('clear')
     else :
         system('clear')
         print_ascii(ascii['death'])
@@ -141,6 +140,7 @@ def main():
         print('Thanks for playing the Python Trail.')
         print('Game Over.')
         sleep(3)
+        system('clear')
 
 if __name__ == '__main__':
     main()
