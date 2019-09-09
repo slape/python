@@ -12,7 +12,7 @@ from trails import Trail
 class Player:
     number: int
     name: str
-    supplies: list
+    supplies: list[list]
     trail_options: list[Trail]
     calamities: list[list]
 
@@ -41,16 +41,16 @@ class Player:
             system('clear')
             print(f'\n{self.name} has these trail options.')
             for i in enumerate(self.trail_options):
-                print(f'{i[0]}: {i[1]}')
+                print(f'{i[0]}: {i[1]} {i[1].desc}\n')
 
             index: int = int(input(f'\nChoose an option: '))
             trail: Trail = self.trail_options[index]
             system('clear')
-            print(f'\nYou chose option: {index}')
-            print(f'{trail}\n {trail.desc}\n')
-            wait()
+            # print(f'\nYou chose option: {index}')
+            # print(f'{trail}\n {trail.desc}\n')
+            # wait()
 
-            system('clear')
+            # system('clear')
             del self.trail_options[index]
             return trail
 
@@ -75,18 +75,11 @@ class Player:
             system('clear')
             return trail
 
-    def choose_supply(self) -> str:
-        """Player chooses a supply to use."""
-        #print you have these Options
+    def lose_supply(self, supply: list) -> None:
+        del self.supplies[self.supplies.index(supply)]
 
-        # print choose an option
-
-        # take in option choise
-
-        # print you chose option -
-
-        # return option
-        pass
+    def gain_supply(self, supply: list) -> None:
+        self.supplies.append(supply)
 
     def __repr__(self):
         """Prints out the players trail options and supplies."""
@@ -105,15 +98,8 @@ class Player:
         if len(self.supplies) > 0:
             out += f'\nSupplies:\n'
             for item in self.supplies:
-                out += f' {item}\n'
+                out += f' {item[0]}\n'
         else:
             out += f'\nSadly, {self.name} is out of supplies.\n'
 
-        # checks for calamities before printing.
-        if len(self.calamities) > 0:
-            out += f'\nCalamities:\n'
-            for item in self.calamities:
-                out += f' {item}: {self.calamities[item]}\n'
-        else:
-            out += f'\nRejoice! {self.name} is free of calamities.\n'
         return out

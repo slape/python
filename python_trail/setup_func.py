@@ -11,7 +11,7 @@ from trails import Trail
 
 def game_setup() -> list[Player]:
     """Sets up game and presents opening screens."""
-    print_ascii(ascii['trail'])
+    print_ascii(ascii['snake'])
     print("Welcome to the Python Trial.\n")
     sleep(3)
     system('clear')

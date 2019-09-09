@@ -13,22 +13,120 @@ from trails import Trail
 def main():
     player_list: list[Player] = game_setup()
     trails_traversed: int = 0
-    while len(player_list) > 0 and trails_traversed < 10:
+    while len(player_list) > 0 and trails_traversed < 20:
         for player in player_list:
-            trail = player.choose_trail()
-            outcome = trail.traverse_trail
-            print(outcome)
+            print(f'The Group has traveresd {trails_traversed} Trails. Need 20 to win.')
+            wait()
+            print(player)
+            system('clear')
+            trail: Trail = player.choose_trail()
+            outcome: str = trail.traverse_trail
+
+            if outcome == 'died':
+                player_list.remove(player)
+                trails_traversed += 1
+                if trails_traversed == 20:
+                    break
+                continue
+
+            elif outcome == 'next':
+                continue
+
+            elif outcome == 'remove_supply':
+                supply = choice(player.supplies)
+                player.lose_supply(supply)
+                system('clear')
+                print_ascii(ascii[supply[1]])
+                print(f'{player.name} lost {supply[0]}')
+                trails_traversed += 1
+                if trails_traversed == 20:
+                    break
+                wait()
+                continue
+
+            elif outcome == 'supply':
+                supply = choice(supplies)
+                player.gain_supply(supply)
+                system('clear')
+                print_ascii(ascii[supply[1]])
+                print(f'{player.name} gained {supply[0]}')
+                trails_traversed += 1
+                if trails_traversed == 20:
+                    break
+                wait()
+                continue
+
+            elif outcome == 'continue':
+                trails_traversed += 1
+                if trails_traversed == 20:
+                    break
+                continue
+
+            elif outcome == 'calamity':
+                calamity = []
+                calamity += (choice(calamities))
+                system('clear')
+                print_ascii(ascii[calamity[0].lower()])
+                print(f'{player.name} has received a calamity.\n')
+                for i in calamity:
+                    print(i)
+                wait()
+
+                if calamity[0] == 'Kenny' or calamity[0] == 'God' or calamity[0] == 'Enterprise' or calamity[0] == 'Dysentery':
+                    print(f'{player.name} died from this calamity.')
+                    player_list.remove(player)
+                    trails_traversed += 1
+                    if trails_traversed == 20:
+                        break
+                    continue
+
+                find = False
+                for player in player_list:
+                    for supply in player.supplies:
+                        if supply[2] == calamity[0]:
+                            system('clear')
+                            print_ascii(ascii[supply[1]])
+                            print(f'{player.name} has {supply[0]}.')
+                            sleep(.75)
+                            print(f'Using {supply[0]} to resolve this calamity.')
+                            wait()
+                            player.lose_supply(supply)
+                            calamity = []
+                            find = True
+                            break
+                    if find:
+                        break
+                    else :
+                        system('clear')
+                        print(f'{player.name} only has these supplies:')
+                        for i in player.supplies:
+                            print(f'{i[0]}')
+                        print(f'\n{player.name} cannot resolve this calamity.')
+                        wait()
+                if find:
+                    trails_traversed += 1
+                    if trails_traversed == 20:
+                        break
+                    continue
+                else :
+                    player_list.remove(player)
+                    trails_traversed += 1
+                    system('clear')
+                    print_ascii(ascii[calamity[0].lower()])
+                    print(f'{player.name} has died from {calamity[0]}')
+                    wait()
+                if trails_traversed == 20:
+                    break
             wait()
             system('clear')
 
-            trails_traversed += 1
-
-    if trails_traversed == 10 and len(player_list) > 0:
-        print_ascii(ascii['trail'])
+    if trails_traversed == 20 and len(player_list) > 0:
+        print_ascii(ascii['end'])
         print(f"Congratulations! You made it through the trail with {len(player_list)} players left.")
         sleep(2)
         system('clear')
     else :
+        system('clear')
         print_ascii(ascii['death'])
         print(f"The Trail is harsh. Everyone died. Game over.")
         sleep(2)
