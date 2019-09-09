@@ -54,7 +54,7 @@ class Trail:
 
         elif self.reward == 'supplies':
             print_ascii(ascii['fort'])
-            print('You arrived at a fort! Take it easy for a moment.')
+            print('You found a castle! Take it easy for a moment and look around.')
             wait()
             return 'supply'
 

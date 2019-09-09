@@ -15,7 +15,7 @@ def main():
     trails_traversed: int = 0
     while len(player_list) > 0 and trails_traversed < 20:
         for player in player_list:
-            
+
             print(player)
             system('clear')
             trail: Trail = player.choose_trail()
@@ -112,8 +112,7 @@ def main():
                     trails_traversed += 1
                     system('clear')
                     print_ascii(ascii[calamity[0].lower()])
-                    print(f'{player.name} has died from {calamity[0]}')
-                    wait()
+                    print(f'{player.name} has died from this calamity.')
                 if trails_traversed == 20:
                     break
             wait()
