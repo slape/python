@@ -31,7 +31,7 @@ def roll_dice(total_avail: int) -> int:
         second_roll: int = randint(1, total)
         print("Rolling...")
         print_ascii(ascii['dice'])
-        sleep(2)
+        sleep(1)
         print(f"The first die roll is: {first_roll}.")
         sleep(.25)
         print(f"The second die roll is: {second_roll}.")
@@ -42,7 +42,7 @@ def roll_dice(total_avail: int) -> int:
         roll: int = randint(1, total_avail)
         print("Rolling...")
         print_ascii(ascii['dice'])
-        sleep(2)
+        sleep(1)
         print(f"The die roll is: {roll}.")
         sleep(.75)
         return roll

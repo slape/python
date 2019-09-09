@@ -15,8 +15,7 @@ def main():
     trails_traversed: int = 0
     while len(player_list) > 0 and trails_traversed < 20:
         for player in player_list:
-            print(f'The Group has traveresd {trails_traversed} Trails. Need 20 to win.')
-            wait()
+            
             print(player)
             system('clear')
             trail: Trail = player.choose_trail()
@@ -73,7 +72,7 @@ def main():
                 wait()
 
                 if calamity[0] == 'Kenny' or calamity[0] == 'God' or calamity[0] == 'Enterprise' or calamity[0] == 'Dysentery':
-                    print(f'{player.name} died from this calamity.')
+                    print(f'\n{player.name} died from this calamity.')
                     player_list.remove(player)
                     trails_traversed += 1
                     if trails_traversed == 20:

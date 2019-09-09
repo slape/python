@@ -34,6 +34,7 @@ class Trail:
             elif roll % 2 == 0:
                 print_ascii(ascii['mountains'])
                 print(f'{self.player} has forded the river!')
+                wait()
                 return 'continue'
 
         elif self.dice == 'odd':
@@ -48,24 +49,22 @@ class Trail:
             else:
                 print_ascii(ascii['mountains'])
                 print(f'{self.player} has forded the river.')
+                wait()
                 return 'continue'
 
         elif self.reward == 'supplies':
             print_ascii(ascii['fort'])
             print('You arrived at a fort! Take it easy for a moment.')
             wait()
-            #print(f'{self.player} has picked up a supply for the group.')
-            # wait()
             return 'supply'
 
         elif self.punish:
-            # print(f'{self.player} has received a calamity.')
-            # wait()
             return 'calamity'
 
         elif self.reward == 'pass':
             print_ascii(ascii['mountains'])
             print('Nothing to see here, Partner.')
+            wait()
             return 'continue'
 
     def __repr__(self):

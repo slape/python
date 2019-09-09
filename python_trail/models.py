@@ -43,14 +43,23 @@ class Player:
             for i in enumerate(self.trail_options):
                 print(f'{i[0]}: {i[1]} {i[1].desc}\n')
 
-            index: int = int(input(f'\nChoose an option: '))
+            total = len(self.trail_options)
+            while True:
+                try:
+                    index: int = int(input(f'\nChoose an option: '))
+                except ValueError:
+                    print("That is not a valid choice. Try again.")
+                    continue
+                else:
+                    if 0 <= index < total:
+                        break
+                    else:
+                        print("That is not a valid choice. Try again.")
+                        continue
+
             trail: Trail = self.trail_options[index]
             system('clear')
-            # print(f'\nYou chose option: {index}')
-            # print(f'{trail}\n {trail.desc}\n')
-            # wait()
 
-            # system('clear')
             del self.trail_options[index]
             return trail
 

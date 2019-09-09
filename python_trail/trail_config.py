@@ -85,7 +85,7 @@ ascii = {
     'oxen' : 'ascii_pics/oxen',
     'pizza' : 'ascii_pics/pizza',
     'rain' : 'ascii_pics/rain',
-    'repair' : 'ascii_pics/repair',
+    'tire' : 'ascii_pics/repair',
     'snake' : 'ascii_pics/snake',
     'parts' : 'ascii_pics/spare_parts',
     'steam' : 'ascii_pics/steam_wagon',
