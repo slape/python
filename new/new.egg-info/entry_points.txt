@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        new=new:cli
+    
