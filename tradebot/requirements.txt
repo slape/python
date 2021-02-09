@@ -1,1 +1,6 @@
 MetaTrader5
+pandas
+pre-commit
+pytz
+schedule
+TA-Lib
