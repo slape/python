@@ -10,3 +10,15 @@ if authorized:
     print("Connected: Connecting to MT5 Client")
 else:
     print("Failed to connect at account #{}, error code: {}".format(account, mt5.last_error()))
+
+
+
+
+
+
+
+
+
+
+
+    
