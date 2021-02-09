@@ -1,0 +1,22 @@
+GET http://example.com HTTP/1.1
+
+###
+
+GET http://httpbin.org/json HTTP/1.1
+
+###
+
+POST http://localhost:7071/api/examp HTTP/1.1
+x-name: jack
+
+{
+    "arg" : "value"
+}
+
+###
+
+GET http://localhost:7071/api/examp?name=jack HTTP/1.1
+
+
+###
+
